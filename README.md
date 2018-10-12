@@ -1,7 +1,7 @@
 # Android app for posting news regarding Natural Calamities
 
 ## Features
-- Works with or without internet connection
+- Works with or without internet/cellular connection
 - Secure communication
 - Uses Wi-Fi Direct and has a blockchain like architecture
 - Centralized server for keeping the blockchain in sync with other far away nodes
