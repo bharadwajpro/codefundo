@@ -20,6 +20,12 @@
 - Centralized server to be done in Node.js with Express.js for handling routes, creating an API and for keeping the blockchain in sync with the nodes.
 - Android app to be done in React Native and Android SDK
 
+## TODO
+-[x] Complete UI
+[-] Integrate with Redux
+[-] Backend in Node.js, Express.js and Database(Database TBD)
+[-] Wi-Fi Direct or Wi-Fi P2P
+
 ## Team
 |          Name         |                              Email                              |           University          |
 |:---------------------:|:---------------------------------------------------------------:|:-----------------------------:|
