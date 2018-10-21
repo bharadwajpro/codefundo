@@ -21,10 +21,10 @@
 - Android app to be done in React Native and Android SDK
 
 ## TODO
--[x] Complete UI
+[x] Complete UI
 [-] Integrate with Redux
-[-] Backend in Node.js, Express.js and Database(Database TBD)
-[-] Wi-Fi Direct or Wi-Fi P2P
+[x] Backend in Node.js, Express.js and Database(Database TBD)
+[-] Wi-Fi Direct or Wi-Fi P2P in React Native or in Native Java Code
 
 ## Team
 |          Name         |                              Email                              |           University          |
