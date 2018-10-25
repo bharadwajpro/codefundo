@@ -6,7 +6,8 @@ import PopupDialog, {
   ScaleAnimation,
 } from 'react-native-popup-dialog';
 import {editTopic} from '../actions/topicDialogActions'
-import {connect, bindActionCreators} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 
 const scaleAnimation = new ScaleAnimation();

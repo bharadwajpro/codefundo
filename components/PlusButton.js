@@ -2,7 +2,8 @@ import React from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
 import {Icon} from 'react-native-elements'
 import {showPostDialog} from '../actions/plusButtonActions'
-import {connect, bindActionCreators} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 
 export const PlusButton = (props) => (

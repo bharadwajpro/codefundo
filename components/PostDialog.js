@@ -6,7 +6,8 @@ import PopupDialog, {
   ScaleAnimation,
 } from 'react-native-popup-dialog';
 import {newPost} from '../actions/postDialogActions'
-import {connect, bindActionCreators} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 const scaleAnimation = new ScaleAnimation();
 
@@ -85,4 +86,4 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({newPost}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(PostsDialog);
+export default connect(mapStateToProps, matchDispatchToProps)(PostDialog);

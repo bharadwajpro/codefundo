@@ -1,7 +1,8 @@
 import {Text} from 'react-native'
 import React from 'react';
 import {displayTopicDialog} from '../actions/topicActions'
-import {connect, bindActionCreators} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 export const Topic = () => (
     <Text style={{color: '#fff'}} onPress={() => this.props.displayTopicDialog()}>

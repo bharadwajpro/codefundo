@@ -22,27 +22,31 @@ export const postPostsServer = (posts) => {
 }
 
 export const getTopicServer = () => {
-    axios.get(SERVER_URL + '/topic')
-    .then(function (response) {
-        return {
-            type: 'TOPIC_FETCHED',
-            topic: response.data
-        }
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    return function(dispatch) {
+        axios.get(SERVER_URL + '/topic')
+        .then(function (response) {
+            dispatch({
+                type: 'TOPIC_FETCHED',
+                topic: response.data
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 }
 
 export const getPostsServer = () => {
-    axios.get(SERVER_URL + '/posts')
-    .then(function (response) {
-        return {
-            type: 'POSTS_FETCHED',
-            posts: response.data
-        }
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    return function(dispatch) {
+        axios.get(SERVER_URL + '/posts')
+        .then(function (response) {
+            dispatch({
+                type: 'POSTS_FETCHED',
+                posts: response.data
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 }

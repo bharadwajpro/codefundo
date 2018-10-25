@@ -1,6 +1,6 @@
 import React from 'react'
 import {Text, ScrollView} from 'react-native'
-import {Post} from './Post'
+import Post from './Post'
 import {connect} from 'react-redux'
 
 
