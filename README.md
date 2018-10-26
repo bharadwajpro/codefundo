@@ -1,5 +1,12 @@
 # Android app for posting news regarding Natural Calamities
 
+## How to Use & Installation
+- Download apk file from [here](https://github.com/bharadwajpro/codefundo/releases)
+- Open the app, Plus button at the bottom right corner is for adding a new Post/News
+- Click the profile icon on top right to edit your name
+- Click the topic name at the center of the header to edit the topic
+- `info` icon for the link to this repository
+
 ## Features
 - Works with or without internet/cellular connection (especially useful when serious natural disasters like Floods, Earthquakes disrupt basic communication system like cell phone towers, fiber optical cables)
 - Secure communication
@@ -22,7 +29,7 @@
 
 ## TODO
 [x] Complete UI
-[-] Integrate with Redux
+[x] Integrate with Redux
 [x] Backend in Node.js, Express.js and Database(Database TBD)
 [-] Wi-Fi Direct or Wi-Fi P2P in React Native or in Native Java Code
 
