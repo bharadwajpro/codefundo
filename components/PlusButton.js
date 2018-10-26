@@ -10,7 +10,7 @@ export const PlusButton = (props) => (
     <TouchableOpacity 
         activeOpacity={0.6} 
         style={{position: 'absolute', width: 50, height: 50, bottom: 30, right: 30, flex: 1, justifyContent: 'center', alignItems: 'stretch'}}
-        onPress={() => this.props.showPostDialog()}
+        onPress={() => props.showPostDialog()}
         >
         <Icon
         reverse
@@ -25,4 +25,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({showPostDialog}, dispatch);
 }
 
-export default connect(matchDispatchToProps)(PlusButton);
+export default connect(null, matchDispatchToProps)(PlusButton);

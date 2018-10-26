@@ -5,7 +5,7 @@ import PopupDialog, {
   DialogButton,
   ScaleAnimation,
 } from 'react-native-popup-dialog';
-import {editTopic} from '../actions/topicDialogActions'
+import {editTopic, hideTopicDialog} from '../actions/topicDialogActions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -14,11 +14,12 @@ const scaleAnimation = new ScaleAnimation();
 
 
 export class TopicDialog extends Component {
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.scaleAnimationDialog.show()
-  //   }, 5000)
-  // }
+  state = {inputTopic: ''}
+
+  componentDidMount() {
+    this.setState({inputTopic: this.props.topic})
+    this.textInput.value = this.props.topic
+  }
 
   showScaleAnimationDialog = () => {
     this.scaleAnimationDialog.show();
@@ -46,27 +47,29 @@ export class TopicDialog extends Component {
             <DialogButton
               text="Cancel"
               onPress={() => {
-                this.scaleAnimationDialog.dismiss();
+                this.props.hideTopicDialog();
               }}
               key="topicDialogCancel"
             />,
             <DialogButton
               text="Ok"
               onPress={() => {
-                this.props.editTopic(this.props.topic)
-                this.scaleAnimationDialog.dismiss();
+                this.props.editTopic(this.state.inputTopic)
+                this.props.hideTopicDialog();
               }}
               key="topicDialogOk"
             />
           ]}
           show={this.props.topicDialogShow}
+          dismissOnTouchOutside={false}
+          dismissOnHardwareBackPress={false}
         >
           <View>
             <TextInput
+              ref={(textInput) => this.textInput = textInput}
               editable={true}
               placeholder='Enter topic name here...'
-              value={this.props.topic}
-              onChangeText={(topic) => {this.props.topic = topic}}
+              onChangeText={(inputTopic) => {this.setState({inputTopic})}}
             />
           </View>
         </PopupDialog>
@@ -83,7 +86,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({editTopic}, dispatch);
+  return bindActionCreators({editTopic, hideTopicDialog}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(TopicDialog);

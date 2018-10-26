@@ -1,5 +1,5 @@
 const _ = require('lodash')
-const sha1 = require('sha1')
+const hash = require('object-hash')
 import {postPostsServer} from '../actions/serverActions'
 
 const postsComparator = (a, b) => {
@@ -12,7 +12,7 @@ const postsComparator = (a, b) => {
 
 export const postsReducer = (state=[], action) => {
     switch(action.type) {
-        case 'POSTS_FECTHED': {
+        case 'POSTS_FETCHED': {
             localCopy = state
             remoteCopy = action.posts
             let postsArray = []
@@ -23,6 +23,7 @@ export const postsReducer = (state=[], action) => {
                 postsArray.push(remoteCopy[k])
             }
             localCopy = postsArray.sort(postsComparator)
+            if(localCopy.length==0) return state
             let uniqueCopy = [localCopy[0]]
             for(let i=1; i<localCopy.length; i++) {
                 if(!_.isEqual(localCopy[i], localCopy[i-1])) uniqueCopy.push(localCopy[i])
@@ -32,13 +33,13 @@ export const postsReducer = (state=[], action) => {
         }
         case 'ADD_NEW_POST': {
             let newPost = {
-                name: action.name,
                 post: action.post,
-                timestamp: Date.now()
+                timestamp: Date.now(),
+                name: action.name
             }
-            newPost["id"] = sha1(newPost)
-            posts = action.posts.unshift(newPost)
-            state = posts
+            newPost["id"] = hash(newPost)
+            action.posts.unshift(newPost)
+            state = [...action.posts]
             postPostsServer(state)
             break;
         }

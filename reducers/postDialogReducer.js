@@ -4,6 +4,10 @@ export const postDialogReducer = (state=false, action) => {
             state = true
             break;
         }
+        case 'HIDE_POST_DIALOG': {
+            state = false
+            break;
+        }
     }
     return state
 }

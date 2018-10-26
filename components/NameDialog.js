@@ -5,7 +5,7 @@ import PopupDialog, {
   DialogButton,
   ScaleAnimation,
 } from 'react-native-popup-dialog';
-import {editName} from '../actions/nameDialogActions'
+import {editName, hideNameDialog} from '../actions/nameDialogActions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -13,11 +13,12 @@ const scaleAnimation = new ScaleAnimation();
 
 
 export class NameDialog extends Component {
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.scaleAnimationDialog.show()
-  //   }, 5000)
-  // }
+  state = {inputName: ''}
+
+  componentDidMount() {
+    this.setState({inputName: this.props.name})
+    this.textInput.value = this.props.name
+  }
 
   showScaleAnimationDialog = () => {
     this.scaleAnimationDialog.show();
@@ -45,27 +46,29 @@ export class NameDialog extends Component {
             <DialogButton
               text="Cancel"
               onPress={() => {
-                this.scaleAnimationDialog.dismiss();
+                this.props.hideNameDialog();
               }}
               key="nameDialogCancel"
             />,
             <DialogButton
               text="Ok"
               onPress={() => {
-                this.props.editName(this.props.name)
-                this.scaleAnimationDialog.dismiss();
+                this.props.editName(this.state.inputName)
+                this.props.hideNameDialog();
               }}
               key="nameDialogOk"
             />
           ]}
           show={this.props.nameDialogShow}
+          dismissOnTouchOutside={false}
+          dismissOnHardwareBackPress={false}
         >
           <View>
             <TextInput
+              ref={(textInput) => this.textInput = textInput}
               editable={true}
               placeholder='Enter your name here...'
-              value={this.props.name}
-              onChangeText={(name) => {this.props.name = name}}
+              onChangeText={(inputName) => {this.setState({inputName})}}
             />
           </View>
         </PopupDialog>
@@ -82,7 +85,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({editName}, dispatch);
+  return bindActionCreators({editName, hideNameDialog}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(NameDialog);

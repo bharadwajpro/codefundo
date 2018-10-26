@@ -12,7 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/posts', (req, res) => {
-    res.json(JSON.parse(fs.readFileSync(STORE_FILE))["posts"])
+    let posts = JSON.parse(fs.readFileSync(STORE_FILE))["posts"]
+    if(posts) res.json(posts)
+    else res.json([])
 })
 
 app.post('/posts', (req, res) => {
@@ -24,7 +26,9 @@ app.post('/posts', (req, res) => {
 })
 
 app.get('/topic', (req, res) => {
-    res.send(JSON.parse(fs.readFileSync(STORE_FILE))["topic"])
+    let topic = JSON.parse(fs.readFileSync(STORE_FILE))["topic"]
+    if(topic) res.send(topic) 
+    else res.send('News')
 })
 
 app.post('/topic', (req, res) => {

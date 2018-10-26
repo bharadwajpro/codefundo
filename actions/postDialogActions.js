@@ -6,3 +6,9 @@ export const newPost = (name, post, posts) => {
         posts
     }
 }
+
+export const hidePostDialog = () => {
+    return {
+        type: 'HIDE_POST_DIALOG'
+    }
+}

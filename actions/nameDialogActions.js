@@ -4,3 +4,9 @@ export const editName = (name) => {
             name
     }
 }
+
+export const hideNameDialog = () => {
+    return {
+        type: 'HIDE_NAME_DIALOG'
+    }
+}

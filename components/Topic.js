@@ -4,9 +4,9 @@ import {displayTopicDialog} from '../actions/topicActions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
-export const Topic = () => (
-    <Text style={{color: '#fff'}} onPress={() => this.props.displayTopicDialog()}>
-        News
+export const Topic = (props) => (
+    <Text style={{color: '#fff'}} onPress={() => props.displayTopicDialog()}>
+        {props.topic}
     </Text>
 )
 

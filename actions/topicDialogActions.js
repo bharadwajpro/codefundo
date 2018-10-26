@@ -4,3 +4,9 @@ export const editTopic = (topic) => {
         topic
     }
 }
+
+export const hideTopicDialog = () => {
+    return {
+        type: 'HIDE_TOPIC_DIALOG'
+    }
+}

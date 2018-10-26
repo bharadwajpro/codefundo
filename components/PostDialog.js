@@ -5,7 +5,7 @@ import PopupDialog, {
   DialogButton,
   ScaleAnimation,
 } from 'react-native-popup-dialog';
-import {newPost} from '../actions/postDialogActions'
+import {newPost, hidePostDialog} from '../actions/postDialogActions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
@@ -13,11 +13,7 @@ const scaleAnimation = new ScaleAnimation();
 
 
 export class PostDialog extends Component {
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.scaleAnimationDialog.show()
-  //   }, 5000)
-  // }
+  state = {inputPost: ''}
 
   showScaleAnimationDialog = () => {
     this.scaleAnimationDialog.show();
@@ -45,26 +41,31 @@ export class PostDialog extends Component {
             <DialogButton
               text="Cancel"
               onPress={() => {
-                this.scaleAnimationDialog.dismiss();
+                this.props.hidePostDialog();
+                this.textInput.clear()
               }}
               key="postDialogCancel"
             />,
             <DialogButton
               text="Ok"
               onPress={() => {
-                this.props.newPost(this.props.name, this.props.post, this.props.posts)
-                this.scaleAnimationDialog.dismiss();
+                this.props.newPost(this.props.name, this.state.inputPost, this.props.posts)
+                this.props.hidePostDialog();
+                this.textInput.clear()
               }}
               key="postDialogOk"
             />
           ]}
           show={this.props.postDialogShow}
+          dismissOnTouchOutside={false}
+          dismissOnHardwareBackPress={false}
         >
           <View>
             <TextInput
+              ref={(textInput) => this.textInput = textInput}
               editable={true}
               placeholder='New post here...'
-              onChangeText={(post) => {this.props.post = post}}
+              onChangeText={(inputPost) => {this.setState({inputPost})}}
             />
           </View>
         </PopupDialog>
@@ -83,7 +84,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({newPost}, dispatch);
+  return bindActionCreators({newPost, hidePostDialog}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PostDialog);

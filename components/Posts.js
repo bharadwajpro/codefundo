@@ -1,11 +1,11 @@
 import React from 'react'
 import {Text, ScrollView} from 'react-native'
-import Post from './Post'
+import {Post} from './Post'
 import {connect} from 'react-redux'
 
 
 // implemented without image with header
-export const Posts = () => (
+export const Posts = (props) => (
     // <FlatList
     //     data={posts}
     //     renderItem={
@@ -19,7 +19,7 @@ export const Posts = () => (
     // />
     <ScrollView>
         {
-            this.props.posts.map((p, i) => {
+            props.posts.map((p, i) => {
                 return (
                     <Post key={p.id} post={p}/>
                 );
@@ -32,7 +32,7 @@ export const Posts = () => (
 function mapStateToProps(state) {
     return {
         posts: state.posts
-    };
+    }
 }
 
 export default connect(mapStateToProps)(Posts);
