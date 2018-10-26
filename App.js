@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import {View, Linking} from 'react-native';
 import KeepAwake from 'react-native-keep-awake';
 import {Header, Icon} from 'react-native-elements'
+import {
+  initialize,
+  isSuccessfulInitialize,
+  startDiscoveringPeers,
+  subscribeOnPeersUpdates,
+  unsubscribeFromPeersUpdates,
+  connect,
+  getAvailablePeers
+} from 'react-native-wifi-p2p'
 import Topic from './components/Topic'
 import Posts from './components/Posts'
 import PlusButton from './components/PlusButton'
@@ -10,7 +19,6 @@ import NameDialog from './components/NameDialog'
 import PostDialog from './components/PostDialog'
 import WiFiP2P from './components/WiFiP2P'
 import {displayNameDialog} from './actions/nameActions'
-import {getPostsServer, getTopicServer} from './actions/serverActions'
 import {Provider} from 'react-redux'
 import configureStore from './store'
 
@@ -20,26 +28,31 @@ let Props = {};
 export default class App extends Component<Props> {
   state = {
     store: configureStore(),
-    postsIntervalId: null,
-    topicIntervalId: null
+    devices: []
   }
 
   componentDidMount() {
-    this.state.store.dispatch(getPostsServer())
-    let postsIntervalId = setInterval(() => {
-      this.state.store.dispatch(getPostsServer())
+    initialize();
+    isSuccessfulInitialize()
+        .then(status => console.log(status));
+    startDiscoveringPeers()
+        .then(() => console.log('Sucessfull'))
+        .catch(err => console.log(err));
+    setInterval(() => {
+      getAvailablePeers()
+      .then(peers => {
+          console.log(peers)
+          for(var i=0; i<peers.devices.length; i++) {
+            connect(peers.devices[i].deviceAddress)
+            .then(() => console.log('Successfully connected'))
+            .catch(err => console.log('Something gone wrong. Details: ', err));
+          }
+      });
     }, 10000)
-    this.state.store.dispatch(getTopicServer())
-    let topicIntervalId = setInterval(() => {
-      this.state.store.dispatch(getTopicServer())
-    }, 10000)
-    this.setState({postsIntervalId, topicIntervalId})
-    // console.log(postsIntervalId, topicIntervalId)
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.postsIntervalId)
-    clearInterval(this.state.topicIntervalId)
+    unsubscribeFromPeersUpdates((event) => console.log('unsubscribeFromPeersUpdates', event));
   }
 
   render() {
@@ -53,7 +66,7 @@ export default class App extends Component<Props> {
             outerContainerStyles={{height: 55}}
           />
           <Posts/>
-          {/* <WiFiP2P/> */}
+          <WiFiP2P/>
           <TopicDialog/>
           <NameDialog/>
           <PostDialog/>

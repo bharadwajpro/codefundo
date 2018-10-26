@@ -1,7 +1,7 @@
 package com.newsaboutnaturaldisasters;
 
 import android.app.Application;
-
+import com.rctunderdark.NetworkManagerPackage;
 import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
@@ -9,7 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-// import io.wifi.p2p.WiFiP2PManagerPackage;
+import io.wifi.p2p.WiFiP2PManagerPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,8 +26,9 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new VectorIconsPackage(),
-            new KCKeepAwakePackage()
-            // new WiFiP2PManagerPackage()
+            new KCKeepAwakePackage(),
+            new NetworkManagerPackage(),
+            new WiFiP2PManagerPackage()
       );
     }
 

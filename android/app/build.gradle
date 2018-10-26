@@ -148,7 +148,8 @@ android {
 }
 
 dependencies {
-    // compile project(':react-native-wifi-p2p')
+    compile project(':react-native-bluetooth-cross-platform')
+    compile project(':react-native-wifi-p2p')
     compile project(':react-native-vector-icons')
     compile project(':react-native-keep-awake')
     implementation fileTree(dir: "libs", include: ["*.jar"])

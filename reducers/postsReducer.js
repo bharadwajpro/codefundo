@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const hash = require('object-hash')
 import {postPostsServer} from '../actions/serverActions'
+import {postPostsPeer} from '../actions/peerActions'
 
 const postsComparator = (a, b) => {
     if (a.timestamp > b.timestamp)
@@ -41,6 +42,7 @@ export const postsReducer = (state=[], action) => {
             action.posts.unshift(newPost)
             state = [...action.posts]
             postPostsServer(state)
+            postPostsPeer(state)
             break;
         }
     }

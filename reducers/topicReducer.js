@@ -1,4 +1,5 @@
 import {postTopicServer} from '../actions/serverActions'
+import {postTopicPeer} from '../actions/peerActions'
 
 export const topicReducer = (state='News', action) => {
     switch(action.type) {
@@ -6,6 +7,7 @@ export const topicReducer = (state='News', action) => {
             if(action.topic == '') break;
             state = action.topic
             postTopicServer(state)
+            postTopicPeer(state)
             break;
         }
         case 'TOPIC_FETCHED': {

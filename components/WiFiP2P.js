@@ -1,211 +1,114 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Button
-} from 'react-native';
-import {
-  initialize,
-  isSuccessfulInitialize,
-  startDiscoveringPeers,
-  stopDiscoveringPeers,
-  unsubscribeFromPeersUpdates,
-  unsubscribeFromConnectionInfoUpdates,
-  subscribeOnConnectionInfoUpdates,
-  subscribeOnPeersUpdates,
-  connect,
-  disconnect,
-  createGroup,
-  removeGroup,
-  getAvailablePeers,
-  sendFile,
-  receiveFile,
-  getConnectionInfo
-} from 'react-native-wifi-p2p';
-import { PermissionsAndroid } from 'react-native';
+import React from 'react';
+import {View} from 'react-native'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {getTopicPeer, getPostsPeer} from '../actions/peerActions'
+let BluetoothCP = require("react-native-bluetooth-cross-platform")
 
-type Props = {};
-export default class WiFiP2P extends Component<Props> {
+class WiFiP2P extends React.Component {
   state = {
-    devices: []
-  };
+    intervalId: null
+  }
 
   componentDidMount() {
-    initialize();
-    isSuccessfulInitialize()
-        .then(status => console.log(status));
-    startDiscoveringPeers()
-        .then(() => console.log('Sucessfull'))
-        .catch(err => console.log(err));
+    thisProps = this.props
+    BluetoothCP.advertise();
 
-    subscribeOnPeersUpdates(({ devices }) => this.handleNewPeers(devices));
-    subscribeOnConnectionInfoUpdates(this.handleNewInfo);
+    this.listener1 = BluetoothCP.addPeerDetectedListener(function(user) {
+      console.log(user)
+      if (typeof user !== 'undefined' && user !== null) {
+        BluetoothCP.inviteUser(user.id);
+        console.log("New user found. Sent Invite to ", user)
+      }
+    });
+
+    this.listener2 = BluetoothCP.addInviteListener(function(user) {
+      console.log(user)
+      if (typeof user !== 'undefined' && user !== null) {
+        BluetoothCP.acceptInvitation(user.id);
+        console.log("Accepted Invite from ", user)
+      }
+    });
+
+    this.listener3 = BluetoothCP.addReceivedMessageListener(function(user) {
+      console.log(user)
+      if (typeof user !== 'undefined' && user !== null) {
+        let data = {}
+        try {
+          data = JSON.parse(user["message"])
+        }
+        catch(e) {
+          console.log(e)
+        }
+        let type = data["type"]
+        let message = data["topic"]
+        if(!message) message = data["posts"]
+        console.log(type, message)
+        console.log(thisProps)
+        if(type=='TOPIC') thisProps.getTopicPeer(message)
+        if(type=='POSTS') thisProps.getPostsPeer(message)
+      }
+    })
+
+    this.listener4 = BluetoothCP.addConnectedListener(function(user) {
+      console.log(user)
+      if (typeof user !== 'undefined' && user !== null) {
+        BluetoothCP.sendMessage("Hello bro!", user.id)
+        console.log("Connected to ", user, " and sent a message")
+      }
+    })
+
+    this.listener5 = BluetoothCP.addPeerLostListener(function(user) {
+      console.log(user)
+      if (typeof user !== 'undefined' && user !== null) {
+        console.log("Lost peer ", user)
+      }
+    })
+
+    this.intervalId = setInterval(() => {
+      posts = this.props.posts
+      let message = {
+        type: "POSTS",
+        posts
+      }
+      BluetoothCP.getConnectedPeers(function(users) {
+          console.log("Hi")
+          if (typeof users !== 'undefined' && users !== null) {
+              for(var i=0; i<users.length; i++) {
+                  console.log(users[i])
+                  BluetoothCP.sendMessage(JSON.stringify(message), users[i]["id"])
+              }
+          }
+      })
+    }, 10000)
+
+
   }
 
   componentWillUnmount() {
-    unsubscribeFromConnectionInfoUpdates((event) => console.log('unsubscribeFromConnectionInfoUpdates', event));
-    unsubscribeFromPeersUpdates((event) => console.log('unsubscribeFromPeersUpdates', event));
+    this.listener1.remove()
+    this.listener2.remove()
+    this.listener3.remove()
+    this.listener4.remove()
+    this.listener5.remove()
+    // clearInterval(this.intervalId)
   }
 
-  handleNewInfo = (info, sceondParam) => {
-    console.log(64646776467, info);
-  };
-
-  handleNewPeers = (peers) => {
-    console.log(754862162442324, peers);
-    this.setState({ devices: peers });
-  };
-
-  connectToFirstDevice = () => {
-      console.log(this.state.devices[0]);
-      connect(this.state.devices[0].deviceAddress)
-          .then(() => console.log('Successfully connected'))
-          .catch(err => console.error('Something gone wrong. Details: ', err));
-  };
-
-  disconnectFromDevice = () => {
-      disconnect()
-          .then(() => console.log(2423435423, 'Successfully disconnected'))
-          .catch(err => console.error(2423435423, 'Something gone wrong. Details: ', err));
-  };
-
-  onCreateGroup = () => {
-      createGroup()
-          .then(() => console.log('Group created successfully!'))
-          .catch(err => console.error('Something gone wrong. Details: ', err));
-  };
-
-  onRemoveGroup = () => {
-      removeGroup()
-          .then(() => console.log('Currently you don\'t belong to group!'))
-          .catch(err => console.error('Something gone wrong. Details: ', err));
-  };
-
-  onStopInvestigation = () => {
-      stopDiscoveringPeers()
-          .then(() => console.log('Stopping of discovering was successful'))
-          .catch(err => console.error(`Something is gone wrong. Maybe your WiFi is disabled? Error details`, err));
-  };
-
-  onStartInvestigate = () => {
-      startDiscoveringPeers()
-          .then(status => console.log(33333333, `Status of discovering peers: ${status}`))
-          .catch(err => console.error(`Something is gone wrong. Maybe your WiFi is disabled? Error details: ${err}`));
-  };
-
-  onGetAvailableDevices = () => {
-      getAvailablePeers()
-          .then(peers => console.log(peers));
-  };
-
-  onSendFile = () => {
-      //const url = '/storage/sdcard0/Music/Rammstein:Amerika.mp3';
-      const url = '/storage/emulated/0/Music/Bullet For My Valentine:Letting You Go.mp3';
-      PermissionsAndroid.request(
-                  PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-                  {
-                      'title': 'Access to read',
-                      'message': 'READ_EXTERNAL_STORAGE'
-                  }
-              )
-          .then(granted => {
-              if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                  console.log("You can use the camera")
-              } else {
-                  console.log("Camera permission denied")
-              }
-          })
-          .then(() => {
-              return PermissionsAndroid.request(
-                  PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-                  {
-                      'title': 'Access to write',
-                      'message': 'WRITE_EXTERNAL_STORAGE'
-                  }
-              )
-          })
-          .then(() => {
-              return sendFile(url)
-                  .then(() => console.log('File sent successfully'))
-                  .catch(err => console.log('Error while file sending', err));
-          })
-          .catch(err => console.log(err));
-  };
-
-  onReceiveFile = () => {
-    receiveFile()
-        .then(() => console.log('File received successfully'))
-        .catch(err => console.log('Error while file receiving', err))
-  };
-
-  onGetConnectionInfo = () => {
-    getConnectionInfo()
-        .then(info => console.log(info));
-  };
-
   render() {
-    return (
-      <View style={styles.container}>
-        <Button
-          title="Connect"
-          onPress={this.connectToFirstDevice}
-        />
-        <Button
-          title="Disconnect"
-          onPress={this.disconnectFromDevice}
-        />
-        <Button
-          title="Create group"
-          onPress={this.onCreateGroup}
-        />
-        <Button
-          title="Remove group"
-          onPress={this.onRemoveGroup}
-        />
-        <Button
-          title="Investigate"
-          onPress={this.onStartInvestigate}
-        />
-        <Button
-          title="Prevent Investigation"
-          onPress={this.onStopInvestigation}
-        />
-        <Button
-          title="Get Available Devices"
-          onPress={this.onGetAvailableDevices}
-        />
-        <Button
-          title="Get connection Info"
-          onPress={this.onGetConnectionInfo}
-        />
-        <Button
-          title="Send file"
-          onPress={this.onSendFile}
-        />
-        <Button
-          title="Receive file"
-          onPress={this.onReceiveFile}
-        />
-      </View>
-    );
+    return(
+      <View></View>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+function mapStateToProps(state) {
+  return {
+      posts: state.posts
+  };
+}
+
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({getTopicPeer, getPostsPeer}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(WiFiP2P);
