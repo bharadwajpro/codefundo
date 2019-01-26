@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Keyboard} from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -42,7 +42,8 @@ export class PostDialog extends Component {
               text="Cancel"
               onPress={() => {
                 this.props.hidePostDialog();
-                this.textInput.clear()
+                this.textInput.clear();
+                Keyboard.dismiss;
               }}
               key="postDialogCancel"
             />,
@@ -51,7 +52,8 @@ export class PostDialog extends Component {
               onPress={() => {
                 this.props.newPost(this.props.name, this.state.inputPost, this.props.posts)
                 this.props.hidePostDialog();
-                this.textInput.clear()
+                this.textInput.clear();
+                Keyboard.dismiss;
               }}
               key="postDialogOk"
             />

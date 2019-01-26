@@ -73,6 +73,7 @@ class WiFiP2P extends React.Component {
       }
       BluetoothCP.getConnectedPeers(function(users) {
           console.log("Hi")
+          console.log(users)
           if (typeof users !== 'undefined' && users !== null) {
               for(var i=0; i<users.length; i++) {
                   console.log(users[i])

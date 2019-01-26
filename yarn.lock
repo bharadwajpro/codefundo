@@ -5102,10 +5102,20 @@ react-native-vector-icons@^6.0.2:
     prop-types "^15.6.2"
     yargs "^8.0.2"
 
+react-native-wifi-hotspot@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-wifi-hotspot/-/react-native-wifi-hotspot-1.0.0.tgz#1591942fe0940c3a33c47d29a61623ec1d8c41e5"
+  integrity sha512-i/66o6obi5rPlfwQpSZvYcl8rpDLXJ1x2rjLRaI5VS8JhMPhGH0xuSn3BwTi/wuNnpWmRYBB0pe0ggYfolM0Ow==
+
 react-native-wifi-p2p@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/react-native-wifi-p2p/-/react-native-wifi-p2p-0.6.3.tgz#1e63b5edc8d259647172636132c176207b8e830f"
   integrity sha512-6nbHhc7MRjZzUlyrmbYxlnWkBijD70PRSmYPJM8PsTOGL3aTiQeqp4edmE0+58SbTDbC9Rd4gTvy8s69ZNRPFA==
+
+react-native-wifi@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-wifi/-/react-native-wifi-1.0.1.tgz#0ff4d71a80d617a47ad5fb8689671fed65689ffb"
+  integrity sha512-j/Fdjhpdbsw+PjsnBsaD0sVtADUAQReu+t91rAmiqtBaWTmwLK8aiz7YOiyAuQUxawvUv81QhFgAKkmRKRwZOA==
 
 react-native@^0.57.4:
   version "0.57.4"
