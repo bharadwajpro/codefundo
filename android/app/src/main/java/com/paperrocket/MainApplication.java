@@ -3,6 +3,7 @@ package com.paperrocket;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import me.alwx.HttpServer.HttpServerReactPackage;
 import com.reactlibrary.RNWifiPackage;
 import reactnative.hotspot.HotspotPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new HttpServerReactPackage(),
             new RNWifiPackage(),
             new HotspotModule(),
             new VectorIconsPackage(),

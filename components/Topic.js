@@ -1,13 +1,15 @@
-import {Text} from 'react-native'
+import {Text, TouchableOpacity} from 'react-native'
 import React from 'react';
 import {displayTopicDialog} from '../actions/topicActions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 export const Topic = (props) => (
-    <Text style={{color: '#fff'}} onPress={() => props.displayTopicDialog()}>
-        {props.topic}
-    </Text>
+    <TouchableOpacity activeOpacity={0.6} onPress={() => props.displayTopicDialog()}>
+        <Text style={{color: '#fff'}}>
+            {props.topic}
+        </Text>
+    </TouchableOpacity>
 )
 
 function mapStateToProps(state) {

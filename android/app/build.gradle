@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-http-bridge')
     compile project(':react-native-wifi')
     compile project(':react-native-wifi-hotspot')
     compile project(':react-native-vector-icons')

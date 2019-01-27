@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, NetInfo, Platform, ToastAndroid} from 'react-native'
-import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {getTopicPeer, getPostsPeer} from '../actions/peerActions'
 import WifiManager from 'react-native-wifi';
 import Hotspot from 'react-native-wifi-hotspot'
 
@@ -86,8 +84,4 @@ function mapStateToProps(state) {
   };
 }
 
-function matchDispatchToProps(dispatch){
-  return bindActionCreators({getTopicPeer, getPostsPeer}, dispatch);
-}
-
-export default connect(mapStateToProps, matchDispatchToProps)(CreateOrJoinNet);
+export default connect(mapStateToProps)(CreateOrJoinNet);
