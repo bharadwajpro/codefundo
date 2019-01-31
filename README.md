@@ -1,4 +1,4 @@
-# Android app for posting news regarding Natural Calamities
+# PaperRocket - Mobile app for posting news regarding Natural Calamities
 
 ## How to Use & Installation
 - Download apk file from [here](https://github.com/bharadwajpro/codefundo/releases)
@@ -9,9 +9,12 @@
 
 ## Features
 - Works with or without internet/cellular connection (especially useful when serious natural disasters like Floods, Earthquakes disrupt basic communication system like cell phone towers, fiber optical cables)
-- Secure communication
-- Uses Wi-Fi Direct and has a blockchain like architecture
-- Centralized server for keeping the blockchain in sync with other far away nodes
+- Cross platform (both iOS and android) (**NEW**) 
+- Forms a Wi-Fi network with nearby devices even when there is no internet connection.
+- Spam Protection by limiting users to a fixed number of messages (**NEW**)
+- Works even when you don't have the app installed on your phone (**NEW**)
+- Works out of the box without login/registration which is really useful in emergency situations. (**NEW**)
+- Centralized server on Azure for keeping the posts in sync with other far away nodes
 
 ## Uses
 - Anyone in any part of the world can post news or important announcements in case of a natural disaster.
@@ -25,13 +28,14 @@
 
 ## Technologies to be used
 - Centralized server to be done in Node.js with Express.js for handling routes, creating an API and for keeping the blockchain in sync with the nodes.
-- Android app to be done in React Native and Android SDK
+- Android app to be done in React Native, Redux and Android, iOS SDK
 
 ## TODO
 [x] Complete UI
 [x] Integrate with Redux
 [x] Backend in Node.js, Express.js and Database(Database TBD)
-[-] Wi-Fi Direct or Wi-Fi P2P in React Native or in Native Java Code
+[x] Wi-Fi Direct or Wi-Fi P2P in React Native or in Native Java Code
+[x] Cross platform & Spam protection
 
 ## Team
 |          Name         |                              Email                              |           University          |
