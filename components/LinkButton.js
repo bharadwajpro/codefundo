@@ -1,5 +1,5 @@
 import React from 'react'
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, Linking} from 'react-native'
 import {Icon} from 'react-native-elements'
 
 const repoURL = 'https://github.com/bharadwajpro/codefundo'

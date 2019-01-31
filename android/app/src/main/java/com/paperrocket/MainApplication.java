@@ -31,7 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new HttpServerReactPackage(),
             new RNWifiPackage(),
-            new HotspotModule(),
+            new HotspotPackage(),
             new VectorIconsPackage(),
             new KCKeepAwakePackage(),
             new NetworkManagerPackage()

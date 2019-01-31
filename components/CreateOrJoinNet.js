@@ -17,7 +17,10 @@ class CreateOrJoinNet extends React.Component {
   }
 
   createOrJoinNet = () => {
-    while(true) {
+    console.log("Entered function")
+    let noExit = 5  
+    while(noExit--) {
+      console.log("Entered infinite check loop")
       if(Platform.OS === 'android') {
         Hotspot.disable(() => {
           ToastAndroid.show("Hotspot Disabled",ToastAndroid.SHORT);
@@ -25,33 +28,35 @@ class CreateOrJoinNet extends React.Component {
           ToastAndroid.show(err.toString(),ToastAndroid.SHORT);
         })
       }
+      // console.log("Hotspot disabled")
       WifiManager.connectToProtectedSSID(appSsid, passwd, false)
       .then(() => {
         console.log("Connected to WiFi")
-        break
+        noExit = 0
       }, () => {
         console.log("Failed to connect or no WiFi available. Trying to create network if platform allows it.")
         if(Platform.OS === 'android') {
           Hotspot.enable(() => {
             ToastAndroid.show("Hotspot Enabled",ToastAndroid.SHORT);
-            const hotspot = {SSID: appSsid, password: passwd, securityType: Hotspot.security.WPA2_PSK}
+            const hotspot = {SSID: 'ASSEM', password: 'helloworld'}
             Hotspot.create(hotspot, () => {
               ToastAndroid.show("Hotspot established", ToastAndroid.SHORT);
-              Hotspot.peersList((data) => {
-                const peers = JSON.parse(data)
-                console.log(peers)
-                // exchange data here
-              }, (err) => {
-                ToastAndroid.show(err.toString(), ToastAndroid.SHORT);
-              })
+              // Hotspot.peersList((data) => {
+              //   const peers = JSON.parse(data)
+              //   console.log(peers)
+              //   // exchange data here
+              // }, (err) => {
+              //   ToastAndroid.show(err.toString(), ToastAndroid.SHORT);
+              // })
             }, (err) => {
-              ToastAndroid.show(err.toString(), ToastAndroid.SHORT);
+              // ToastAndroid.show(err.toString(), ToastAndroid.SHORT);
             })
           }, (err) => {
             ToastAndroid.show(err.toString(),ToastAndroid.SHORT);
           })
         }
         else console.log("Trying to find WiFi and connect...")
+        noExit--
       })
       setTimeout(function(){console.log('Retrying for an existing network')}, Math.floor(Math.random()*10000+60000));      
     }
@@ -59,16 +64,19 @@ class CreateOrJoinNet extends React.Component {
 
   componentDidMount() {
     NetInfo.getConnectionInfo().then((connectionInfo) => {
+      console.log("Checking for active connection presence")
       if(connectionInfo.type=='none') this.createOrJoinNet();
+      // for testing only
+      // this.createOrJoinNet();
     })
     NetInfo.addEventListener(
       'connectionChange',
-      handleConnectivityChange
+      this.handleConnectivityChange
     );
   }
 
   componentWillUnmount() {
-    NetInfo.removeEventListener('connectionChange', handleConnectivityChange);    
+    NetInfo.removeEventListener('connectionChange', this.handleConnectivityChange);    
   }
 
   render() {

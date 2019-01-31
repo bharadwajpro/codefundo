@@ -137,11 +137,11 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-http-bridge')
-    compile project(':react-native-wifi')
     compile project(':react-native-wifi-hotspot')
+    compile project(':react-native-wifi')
     compile project(':react-native-vector-icons')
     compile project(':react-native-keep-awake')
+    compile project(':react-native-http-bridge')
     compile project(':react-native-bluetooth-cross-platform')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"

@@ -16,7 +16,7 @@ export const PlusButton = (props) => (
         reverse
         name='plus'
         type='font-awesome'
-        color='#00f'
+        color='#f40057'
         ></Icon>
     </TouchableOpacity>
 )

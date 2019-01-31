@@ -3,7 +3,7 @@ const hash = require('object-hash')
 import {postPostsServer} from '../actions/serverActions'
 import {postPostsPeer} from '../actions/peerActions'
 import {postPostsAp} from '../actions/peerHotspotActions'
-const newPostLimit = 10 // every 30 min
+let newPostLimit = 5 // every 30 min
 
 const postsComparator = (a, b) => {
     if (a.timestamp > b.timestamp)
@@ -35,7 +35,8 @@ export const postsReducer = (state=[], action) => {
             break;
         }
         case 'ADD_NEW_POST': {
-            if(newPost<=0) break;
+            console.log(newPost)
+            if(newPostLimit<=0) break;
             let newPost = {
                 post: action.post,
                 timestamp: Date.now(),

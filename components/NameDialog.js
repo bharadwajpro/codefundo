@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Platform} from 'react-native';
 import PopupDialog, {
   DialogTitle,
   DialogButton,
@@ -27,7 +27,7 @@ export class NameDialog extends Component {
   render() {
     return (
       <View 
-        style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}
+        style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center', zIndex: (Platform.OS === 'ios' && this.props.nameDialogShow ? 2:undefined)}}
       >
         {/* <View style={styles.container}>
           <DialogButton
