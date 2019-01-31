@@ -1,6 +1,6 @@
 const axios = require('axios')
-// const SERVER_URL = 'http://104.211.218.7'
-const SERVER_URL = 'http://192.168.0.100:3000'
+const SERVER_URL = 'http://104.211.243.198'
+// const SERVER_URL = 'http://192.168.0.100:3000'
 
 export const postTopicServer = (topic) => {
     axios.post(SERVER_URL + '/topic', {topic})
