@@ -3,6 +3,7 @@ package com.paperrocket;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNWifiPackage;
 import me.alwx.HttpServer.HttpServerReactPackage;
 import com.reactlibrary.RNWifiPackage;
 import reactnative.hotspot.HotspotPackage;
@@ -34,7 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
             new HotspotPackage(),
             new VectorIconsPackage(),
             new KCKeepAwakePackage(),
-            new NetworkManagerPackage()
+            new NetworkManagerPackage(),
+            new RNWifiHotspot()
       );
     }
 

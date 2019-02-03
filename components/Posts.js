@@ -18,9 +18,9 @@ class Posts extends React.Component {
         postPostsServer(this.props.posts)
         this.props.getPostsServer()
         this.props.getTopicServer()
-        postPostsAp(this.props.posts)
-        this.props.getPostsAp()
-        this.props.getTopicAp()
+        // postPostsAp(this.props.posts)
+        // this.props.getPostsAp()
+        // this.props.getTopicAp()
         // postPostsPeer(this.props.posts)
     }
 

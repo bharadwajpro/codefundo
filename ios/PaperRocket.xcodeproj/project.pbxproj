@@ -26,7 +26,6 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1FFEF32F1AA24AE28EE09116 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EAF4D5D09734AC9A87B538E /* Ionicons.ttf */; };
-		227A1F98F9374E0CA04D2BE7 /* libRNWifi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 931087D89D754F419FD83CE3 /* libRNWifi.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -70,6 +69,7 @@
 		F356F8527A3C48A89CD3C181 /* libRCTHttpServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F1C94C0AE1242CA9B5F108B /* libRCTHttpServer.a */; };
 		F94BEE6184D246709C36FC9B /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8A6F85BC4084FCFB33FBC0E /* MaterialCommunityIcons.ttf */; };
 		FEBA4AEEE0A3449BB9AFCEE5 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE64AAC5DA4540689248E7AE /* FontAwesome5_Brands.ttf */; };
+		A7DB48A78A6C4F7BB1EDEE39 /* libRNWifi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AEF6F7D7BF498B8B414250 /* libRNWifi.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -360,13 +360,6 @@
 			remoteGlobalIDString = B29EC9CC1E48BED600704A36;
 			remoteInfo = RCTHttpServer;
 		};
-		81DC4E2422005BA4002A13CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 47E48E4541B04D49AAD3D530 /* RNWifi.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNWifi;
-		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -431,7 +424,6 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F50256CEBDE4358B5479CD8 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		458F4525713E4B7787523561 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		47E48E4541B04D49AAD3D530 /* RNWifi.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNWifi.xcodeproj; path = "../node_modules/react-native-wifi/ios/RNWifi.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7F1C94C0AE1242CA9B5F108B /* libRCTHttpServer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTHttpServer.a; sourceTree = "<group>"; };
@@ -450,7 +442,6 @@
 		81AAE0CA21F4439C00A02373 /* Underdark.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Underdark.framework; sourceTree = "<group>"; };
 		81AAE0CB21F4439D00A02373 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		931087D89D754F419FD83CE3 /* libRNWifi.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNWifi.a; sourceTree = "<group>"; };
 		9C1F3190DCB74AB59E31DE4D /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BCEFFE4E28174F32B470C816 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -462,6 +453,8 @@
 		E2F0C7B79E404CDDA2813750 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E332E5D5FFDF413BB89CDD5D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		FE64AAC5DA4540689248E7AE /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		2B3AE38A29384845AE344DA7 /* RNWifi.xcodeproj */ = {isa = PBXFileReference; name = "RNWifi.xcodeproj"; path = "../node_modules/react-native-wifi/ios/RNWifi.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B6AEF6F7D7BF498B8B414250 /* libRNWifi.a */ = {isa = PBXFileReference; name = "libRNWifi.a"; path = "libRNWifi.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,8 +486,8 @@
 				5E4369822439464AB4186589 /* libRNVectorIcons.a in Frameworks */,
 				81AAE10421F4459100A02373 /* ProtocolBuffers.framework in Frameworks */,
 				81AAE10521F4459100A02373 /* Underdark.framework in Frameworks */,
-				227A1F98F9374E0CA04D2BE7 /* libRNWifi.a in Frameworks */,
 				F356F8527A3C48A89CD3C181 /* libRCTHttpServer.a in Frameworks */,
+				A7DB48A78A6C4F7BB1EDEE39 /* libRNWifi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,14 +721,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81DC4E1E22005BA4002A13CA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				81DC4E2522005BA4002A13CA /* libRNWifi.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,8 +738,8 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				DB8237137807479986CA1C2F /* KCKeepAwake.xcodeproj */,
 				D9580136496E4D52B7D42F97 /* RNVectorIcons.xcodeproj */,
-				47E48E4541B04D49AAD3D530 /* RNWifi.xcodeproj */,
 				DB90A6DFA71E42D5B3EAAE9D /* RCTHttpServer.xcodeproj */,
+				2B3AE38A29384845AE344DA7 /* RNWifi.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -992,10 +977,6 @@
 				{
 					ProductGroup = 81AAE0B321F4412E00A02373 /* Products */;
 					ProjectRef = D9580136496E4D52B7D42F97 /* RNVectorIcons.xcodeproj */;
-				},
-				{
-					ProductGroup = 81DC4E1E22005BA4002A13CA /* Products */;
-					ProjectRef = 47E48E4541B04D49AAD3D530 /* RNWifi.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1282,13 +1263,6 @@
 			remoteRef = 81DC4E2122005BA4002A13CA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		81DC4E2522005BA4002A13CA /* libRNWifi.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNWifi.a;
-			remoteRef = 81DC4E2422005BA4002A13CA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1473,16 +1447,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = PaperRocketTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1508,16 +1479,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = PaperRocketTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1548,6 +1516,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = PaperRocket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1585,6 +1554,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = PaperRocket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1622,15 +1592,12 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = "PaperRocket-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1663,15 +1630,12 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = "PaperRocket-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1703,15 +1667,12 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = "PaperRocket-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1743,15 +1704,12 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-wifi/ios",
 					"$(SRCROOT)..\node_modules\neact-native-http-bridge/**",
+					"$(SRCROOT)\..\node_modules\react-native-wifi\ios",
 				);
 				INFOPLIST_FILE = "PaperRocket-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (

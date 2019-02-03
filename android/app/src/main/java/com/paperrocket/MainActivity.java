@@ -1,6 +1,11 @@
 package com.paperrocket;
 
 import com.facebook.react.ReactActivity;
+import reactnative.hotspot.HotspotPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.corbt.keepawake.KCKeepAwakePackage;
+import me.alwx.HttpServer.HttpServerReactPackage;
+import com.rctunderdark.NetworkManagerPackage;
 
 public class MainActivity extends ReactActivity {
 

@@ -28,7 +28,7 @@ export const getTopicAp = () => {
         .then(function (response) {
             dispatch({
                 type: 'TOPIC_FETCHED',
-                topic: response.data
+                topic: response.data["topic"]
             })
         })
         .catch(function (error) {

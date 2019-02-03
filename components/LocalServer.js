@@ -7,28 +7,35 @@ import {receivedPostsClient} from '../actions/localServerActions'
 var httpBridge = require('react-native-http-bridge')
 
 class LocalServer extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         if(Platform.OS === 'android') {
             thisProps = this.props
             console.log("Local Server started")
             httpBridge.start(5661, "P2PSERVICE", (req) => {
-                console.log("Ready for connections...")
                 path = req.url.split('/')[1]
                 if(req.type==='GET' && path==='topic') {
-                    httpBridge.respond(200, "application/json", thisProps.topic)
+                    console.log(thisProps.topic)
+                    httpBridge.respond(200, "application/json", {"topic": thisProps.topic})
                 }
                 else if(req.type==='GET' && path==='posts') {
-                    httpBridge.respond(200, "application/json", JSON.stringify(thisProps.posts))
+                    console.log(thisProps.posts)
+                    httpBridge.respond(200, "application/json", thisProps.posts)
                 }
                 else if(req.type==='POST' && path==='topic') {
-                    let newTopic = req.postData["topic"]
+                    console.log(req)
+                    console.log(thisProps.topic)
+                    let newTopic = req.postData
                     thisProps.editTopic(newTopic)
-                    httpBridge.respond(200, "application/json", thisProps.topic)
+                    httpBridge.respond(200, "application/json", {"topic": thisProps.topic})
                 }
                 else if(req.type==='POST' && path==='posts') {
-                    let newPosts = req.postData["posts"]
+                    console.log(req)
+                    let newPosts = JSON.parse(req.postData)
                     thisProps.receivedPostsClient(newPosts)
-                    httpBridge.respond(200, "application/json", JSON.stringify(thisProps.posts))
+                    httpBridge.respond(200, "application/json", thisProps.posts)
+                }
+                else {
+                    httpBridge.respond(200, "application/json", {"Error":"404 Not found"})
                 }
             })
         }

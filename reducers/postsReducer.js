@@ -18,6 +18,7 @@ export const postsReducer = (state=[], action) => {
         case 'POSTS_FETCHED': {
             localCopy = state
             remoteCopy = action.posts
+            console.log(remoteCopy)
             let postsArray = []
             for(let k in localCopy){
                 postsArray.push(localCopy[k])
