@@ -49,7 +49,8 @@ class CreateOrJoinNet extends React.Component {
   }
 
   componentWillUnmount() {
-    NetInfo.removeEventListener('connectionChange', this.handleConnectivityChange);    
+    NetInfo.removeEventListener('connectionChange', this.handleConnectivityChange);   
+    WifiHotspot.stop(); 
   }
 
   render() {

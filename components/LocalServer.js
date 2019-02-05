@@ -14,28 +14,27 @@ class LocalServer extends React.Component {
             httpBridge.start(5661, "P2PSERVICE", (req) => {
                 path = req.url.split('/')[1]
                 if(req.type==='GET' && path==='topic') {
-                    console.log(thisProps.topic)
-                    httpBridge.respond(200, "application/json", {"topic": thisProps.topic})
+                    httpBridge.respond(req.requestId, 200, "application/json", JSON.stringify({"topic": thisProps.topic}))
                 }
                 else if(req.type==='GET' && path==='posts') {
                     console.log(thisProps.posts)
-                    httpBridge.respond(200, "application/json", thisProps.posts)
+                    httpBridge.respond(req.requestId, 200, "application/json", JSON.stringify(thisProps.posts))
                 }
                 else if(req.type==='POST' && path==='topic') {
                     console.log(req)
                     console.log(thisProps.topic)
-                    let newTopic = req.postData
+                    let newTopic = JSON.parse(req.postData)["topic"]
                     thisProps.editTopic(newTopic)
-                    httpBridge.respond(200, "application/json", {"topic": thisProps.topic})
+                    httpBridge.respond(req.requestId, 200, "application/json", JSON.stringify({"topic": thisProps.topic}))
                 }
                 else if(req.type==='POST' && path==='posts') {
                     console.log(req)
                     let newPosts = JSON.parse(req.postData)
                     thisProps.receivedPostsClient(newPosts)
-                    httpBridge.respond(200, "application/json", thisProps.posts)
+                    httpBridge.respond(req.requestId, 200, "application/json", JSON.stringify(thisProps.posts))
                 }
                 else {
-                    httpBridge.respond(200, "application/json", {"Error":"404 Not found"})
+                    httpBridge.respond(req.requestId, 200, "application/json", JSON.stringify({"Error":"404 Not found"}))
                 }
             })
         }

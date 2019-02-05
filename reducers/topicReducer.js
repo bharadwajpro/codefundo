@@ -9,7 +9,7 @@ export const topicReducer = (state='News', action) => {
             state = action.topic
             postTopicServer(state)
             postTopicPeer(state)
-            postTopicAp(state)
+            // postTopicAp(state)
             break;
         }
         case 'TOPIC_FETCHED': {
